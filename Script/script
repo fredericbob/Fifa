@@ -1,0 +1,15 @@
+
+DELETE FROM joueurposte;
+DELETE FROM caracteristiquejoueur;
+DELETE FROM statistiquejoueur;
+DELETE FROM caracteristiqueformation;
+DELETE FROM equipe;
+DELETE FROM coefficient;
+
+
+DELETE FROM joueur;
+DELETE FROM poste;
+DELETE FROM club;
+DELETE FROM nationalite;
+DELETE FROM caracteristique;
+DELETE FROM formation;
