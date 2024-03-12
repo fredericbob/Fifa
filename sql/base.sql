@@ -12,13 +12,14 @@ CREATE TABLE poste(
 
 CREATE TABLE club(
         id  SERIAL PRIMARY KEY,
-        nom varchar,
-        photo varchar
+        code_club varchar,
+        intitule varchar
 );
 
 create table nationalite(
         id serial PRIMARY KEY ,
-        nom varchar
+        code varchar,
+        intitule varchar
 );
 
 CREATE TABLE caracteristiquejoueur(

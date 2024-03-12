@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload CSV</title>
+</head>
+<body>
+<h2>Uploader un fichier CSV</h2>
+<form action="/importnationalite" method="post" enctype="multipart/form-data">
+    <label for="file">Choisir un fichier CSV :</label><br>
+    <input type="file" id="file" name="file" accept=".csv"><br><br>
+    <input type="submit" value="Importer">
+</form>
+</body>
+</html>
