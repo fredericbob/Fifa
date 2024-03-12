@@ -6,21 +6,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Nationalite {
+public class Club {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String code;
+    private String code_club;
     private String intitule;
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public int getId() {
         return id;
@@ -28,6 +20,14 @@ public class Nationalite {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getCode_club() {
+        return code_club;
+    }
+
+    public void setCode_club(String code_club) {
+        this.code_club = code_club;
     }
 
     public String getIntitule() {

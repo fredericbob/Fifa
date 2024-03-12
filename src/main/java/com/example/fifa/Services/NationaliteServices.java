@@ -19,7 +19,8 @@ public class NationaliteServices {
 
     public List<Nationalite> findAll(){ return this.nationaliteRepository.findAll();}
 
-    public void uptade(int id ,String nom){
-         this.nationaliteRepository.uptade(id,nom);
+    public void uptade(Nationalite nationalite){
+        this.nationaliteRepository.save(nationalite);
+
     }
 }
