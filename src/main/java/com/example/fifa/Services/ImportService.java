@@ -1,8 +1,6 @@
 package com.example.fifa.Services;
 
-import com.example.fifa.Models.Club;
-import com.example.fifa.Models.Joueurs;
-import com.example.fifa.Models.Nationalite;
+import com.example.fifa.Models.*;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import jakarta.transaction.Transactional;
@@ -18,13 +16,19 @@ import java.io.Reader;
 @Service
 public class ImportService {
 
+    private final CoefficientService coefficientService;
+    private final CaracteristiqueServices caracteristiqueServices;
+    private final PosteServices posteServices;
     private final NationaliteServices nationaliteServices;
 
     private final ClubServices clubServices;
     private final JoueurServices joueurServices;
 
     @Autowired
-    public ImportService(NationaliteServices nationaliteServices, ClubServices clubServices, JoueurServices joueurServices) {
+    public ImportService(CoefficientService coefficientService, CaracteristiqueServices caracteristiqueServices, PosteServices posteServices, NationaliteServices nationaliteServices, ClubServices clubServices, JoueurServices joueurServices) {
+        this.coefficientService = coefficientService;
+        this.caracteristiqueServices = caracteristiqueServices;
+        this.posteServices = posteServices;
         this.nationaliteServices = nationaliteServices;
         this.clubServices = clubServices;
         this.joueurServices = joueurServices;
@@ -105,4 +109,31 @@ public class ImportService {
         }
 
     }
-}
+
+    @Transactional
+    public void importcsvcoefficient(MultipartFile file) throws IOException, CsvValidationException {
+       try (Reader reader = new InputStreamReader(file.getInputStream())) {
+
+               CSVReader csvReader = new CSVReader(reader);
+
+               String[] nextcolonne;
+               Poste p;
+               Caracteristique ca;
+               Coefficient c;
+
+           csvReader.readNext();
+           while ((nextcolonne = csvReader.readNext()) != null){
+
+               c = new Coefficient();
+               p = this.posteServices.findbyposte(nextcolonne[0]);
+               c.setPoste(p);
+               ca = this.caracteristiqueServices.findbycaracteristique(nextcolonne[1]);
+               c.setCaracteristique(ca);
+               c.setCoef(Integer.parseInt(nextcolonne[2]));
+               this.coefficientService.save(c);
+
+           }
+           }
+       }
+    }
+

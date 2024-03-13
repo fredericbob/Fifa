@@ -23,6 +23,8 @@ CREATE TABLE poste(
        nom varchar
 );
 
+insert into poste(nom) values ('gardien'),('defenseur'),('milieu'),('attaquant');
+
 CREATE TABLE club(
         id  SERIAL PRIMARY KEY,
         code_club varchar unique ,
@@ -53,7 +55,7 @@ CREATE TABLE joueurposte(
 CREATE TABLE caracteristique(
         id  SERIAL PRIMARY KEY,
         nom varchar,
-        abreviation varchar
+        abreviation varchar unique
 );
 
 INSERT INTO caracteristique (nom, abreviation)
@@ -92,7 +94,7 @@ CREATE TABLE coefficient(
         id  SERIAL PRIMARY KEY,
         poste int references poste(id),
         caracteristique int references caracteristique(id),
-        coefficient int
+        coef int
 );
 
 
