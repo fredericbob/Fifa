@@ -40,6 +40,9 @@ public class ImportContollers {
             else if ("joueurs".equals(type)) {
                 importService.importcsvjoueur(file);
             }
+            else if ("coef".equals(type)) {
+                importService.importcsvcoefficient(file);
+            }
 
             return ResponseEntity.ok().body("Importation réussie !");
         } catch (IOException | CsvValidationException e) {

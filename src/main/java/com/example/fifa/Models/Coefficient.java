@@ -16,6 +16,37 @@ public class Coefficient {
     @JoinColumn(name = "caracteristique",referencedColumnName = "id")
     private Caracteristique caracteristique;
 
-    private int coefficient;
+    private int coef;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Poste getPoste() {
+        return poste;
+    }
+
+    public void setPoste(Poste poste) {
+        this.poste = poste;
+    }
+
+    public Caracteristique getCaracteristique() {
+        return caracteristique;
+    }
+
+    public void setCaracteristique(Caracteristique caracteristique) {
+        this.caracteristique = caracteristique;
+    }
+
+    public int getCoef() {
+        return coef;
+    }
+
+    public void setCoef(int coef) {
+        this.coef = coef;
+    }
 }
