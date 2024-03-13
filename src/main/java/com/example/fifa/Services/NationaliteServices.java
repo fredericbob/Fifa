@@ -19,7 +19,7 @@ public class NationaliteServices {
 
     public List<Nationalite> findAll(){ return this.nationaliteRepository.findAll();}
 
-    public void uptade(Nationalite nationalite){
+    public void save(Nationalite nationalite){
         this.nationaliteRepository.save(nationalite);
 
     }

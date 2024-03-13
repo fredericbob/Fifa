@@ -1,7 +1,20 @@
-CREATE TABLE joueur(
+CREATE TABLE joueurs(
       id  SERIAL PRIMARY KEY,
       nom varchar,
-      photo varchar
+      prenom varchar,
+      taille int ,
+      attaquant int ,
+      milieu int,
+      defenseur int,
+      gardien int ,
+      nationale  int references  nationalite,
+      club int references club,
+      physique int ,
+      vitesse int,
+      passe int ,
+      tir int ,
+      drible int ,
+      defense int
 );
 
 
@@ -12,13 +25,13 @@ CREATE TABLE poste(
 
 CREATE TABLE club(
         id  SERIAL PRIMARY KEY,
-        code_club varchar,
+        code_club varchar unique ,
         intitule varchar
 );
 
 create table nationalite(
         id serial PRIMARY KEY ,
-        code varchar,
+        code varchar unique ,
         intitule varchar
 );
 
@@ -77,9 +90,9 @@ CREATE TABLE equipe(
 
 CREATE TABLE coefficient(
         id  SERIAL PRIMARY KEY,
-        idposte int references poste(id),
-        idcaracteristique int references caracteristique(id),
-        coeff int
+        poste int references poste(id),
+        caracteristique int references caracteristique(id),
+        coefficient int
 );
 
 
