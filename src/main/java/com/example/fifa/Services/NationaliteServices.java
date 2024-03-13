@@ -21,6 +21,9 @@ public class NationaliteServices {
 
     public void save(Nationalite nationalite){
         this.nationaliteRepository.save(nationalite);
+    }
 
+    public Nationalite getbycode(String code){
+      return   this.nationaliteRepository.getbycode(code);
     }
 }

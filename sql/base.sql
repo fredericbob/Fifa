@@ -7,13 +7,13 @@ CREATE TABLE joueurs(
       milieu int,
       defenseur int,
       gardien int ,
-      nationale  int references  nationalite,
+      nationalite  int references  nationalite,
       club int references club,
       physique int ,
       vitesse int,
       passe int ,
       tir int ,
-      drible int ,
+      dribble int ,
       defense int
 );
 

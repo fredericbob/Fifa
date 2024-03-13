@@ -37,6 +37,9 @@ public class ImportContollers {
             } else if ("club".equals(type)) {
                 importService.importcsvclub(file);
             }
+            else if ("joueurs".equals(type)) {
+                importService.importcsvjoueur(file);
+            }
 
             return ResponseEntity.ok().body("Importation réussie !");
         } catch (IOException | CsvValidationException e) {

@@ -1,6 +1,7 @@
 package com.example.fifa.Services;
 
 import com.example.fifa.Models.Club;
+import com.example.fifa.Models.Joueurs;
 import com.example.fifa.Models.Nationalite;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
@@ -20,11 +21,13 @@ public class ImportService {
     private final NationaliteServices nationaliteServices;
 
     private final ClubServices clubServices;
+    private final JoueurServices joueurServices;
 
     @Autowired
-    public ImportService(NationaliteServices nationaliteServices, ClubServices clubServices) {
+    public ImportService(NationaliteServices nationaliteServices, ClubServices clubServices, JoueurServices joueurServices) {
         this.nationaliteServices = nationaliteServices;
         this.clubServices = clubServices;
+        this.joueurServices = joueurServices;
     }
 
     @Transactional
@@ -64,7 +67,42 @@ public class ImportService {
           throw new RuntimeException(e);
       }
     }
+    public void importcsvjoueur(MultipartFile file) throws IOException {
+        try (Reader reader = new InputStreamReader(file.getInputStream())) {
+            CSVReader csvReader = new CSVReader(reader);
+            String[] nextRecord;
+            Club club ;
+            Nationalite nationalite;
+            Joueurs j;
+            csvReader.readNext();
 
+            while ((nextRecord = csvReader.readNext()) != null) {
+                j = new Joueurs();
 
+                j.setNom(nextRecord[0]);
+                j.setPrenom(nextRecord[1]);
+                j.setTaille(Integer.parseInt(nextRecord[2]));
+                j.setAttaquant(Integer.parseInt(nextRecord[3]));
+                j.setMilieu(Integer.parseInt(nextRecord[4]));
+                j.setDefense(Integer.parseInt(nextRecord[5]));
+                j.setGardien(Integer.parseInt(nextRecord[6]));
 
+                nationalite =this.nationaliteServices.getbycode(nextRecord[7]);
+
+                j.setNationalite(nationalite);
+                club = this.clubServices.findbycode(nextRecord[8]);
+                j.setClub(club);
+                j.setPhysique(Integer.parseInt(nextRecord[9]));
+                j.setVitesse(Integer.parseInt(nextRecord[10]));
+                j.setPasse(Integer.parseInt(nextRecord[11]));
+                j.setTir(Integer.parseInt(nextRecord[12]));
+                j.setDRIBBLE(Integer.parseInt(nextRecord[13]));
+                j.setDefense(Integer.parseInt(nextRecord[14]));
+                this.joueurServices.save(j);
+            }
+        } catch (CsvValidationException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
