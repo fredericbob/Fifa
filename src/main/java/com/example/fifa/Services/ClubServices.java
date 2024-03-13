@@ -5,6 +5,7 @@ import com.example.fifa.Repository.ClubRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClubServices {
@@ -21,5 +22,6 @@ public class ClubServices {
         this.clubRepository.save(club);
     }
 
+    public Club findbycode(String club){return this.clubRepository.getBycode(club);}
 
 }

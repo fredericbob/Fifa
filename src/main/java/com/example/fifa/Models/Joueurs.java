@@ -13,7 +13,16 @@ public class Joueurs {
     private int taille;
     private int attaquant;
     private int milieu;
-    private int defensseur;
+    private int defenseur;
+
+    public int getDefenseur() {
+        return defenseur;
+    }
+
+    public void setDefenseur(int defenseur) {
+        this.defenseur = defenseur;
+    }
+
     private int gardien;
     @ManyToOne
     @JoinColumn(name = "nationalite" ,referencedColumnName = "id")
@@ -74,13 +83,7 @@ public class Joueurs {
         this.milieu = milieu;
     }
 
-    public int getDefensseur() {
-        return defensseur;
-    }
 
-    public void setDefensseur(int defensseur) {
-        this.defensseur = defensseur;
-    }
 
     public int getGardien() {
         return gardien;
@@ -138,13 +141,7 @@ public class Joueurs {
         this.tir = tir;
     }
 
-    public int getDribble() {
-        return dribble;
-    }
 
-    public void setDribble(int dribble) {
-        this.dribble = dribble;
-    }
 
     public int getDefense() {
         return defense;
@@ -155,7 +152,16 @@ public class Joueurs {
     }
 
     private int passe;
+
+    public int getDRIBBLE() {
+        return DRIBBLE;
+    }
+
+    public void setDRIBBLE(int DRIBBLE) {
+        this.DRIBBLE = DRIBBLE;
+    }
+
     private int tir;
-    private int dribble;
+    private int DRIBBLE;
     private int defense;
 }
