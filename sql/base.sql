@@ -90,11 +90,16 @@ CREATE TABLE equipe(
          idcaracteristiquejoueur int references caracteristiquejoueur(id)
 );
 
+
 CREATE TABLE coefficient(
         id  SERIAL PRIMARY KEY,
-        poste int references poste(id),
-        caracteristique int references caracteristique(id),
+        poste int references poste(id)  ,
+        caracteristique int references caracteristique(id)  ,
         coef int
 );
+
+
+ALTER TABLE coefficient
+    ADD CONSTRAINT u_coefficient UNIQUE (poste, caracteristique);
 
 

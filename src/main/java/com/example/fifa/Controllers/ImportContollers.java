@@ -30,7 +30,6 @@ public class ImportContollers {
 
     @PostMapping("/importnationalite")
     public ResponseEntity<String> importNationalite(@RequestParam("file") MultipartFile file,@RequestParam("types") String type) {
-        System.out.println("elyse");
         try {
             if("nationalite".equals(type) ) {
                 importService.importcsvnational(file);
@@ -45,8 +44,8 @@ public class ImportContollers {
             }
 
             return ResponseEntity.ok().body("Importation réussie !");
-        } catch (IOException | CsvValidationException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(            e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erreur lors de l'importation du fichier : " + e.getMessage());
         }
     }
