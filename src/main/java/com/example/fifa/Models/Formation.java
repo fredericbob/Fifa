@@ -6,23 +6,23 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Poste {
+public class Formation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nom;
 
-    public int getId() {
-        return id;
-    }
-
-    public Poste(int id) {
+    public Formation(int id) {
         this.id = id;
     }
 
-    public Poste() {
+    public Formation() {
 
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {
